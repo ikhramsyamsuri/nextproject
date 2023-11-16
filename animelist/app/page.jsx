@@ -1,10 +1,10 @@
 import Link from "next/link"
 import Topanime from "./components/Topanime";
 import Header from "./components/Header";
+import { GetAPIAnime } from "./components/libs/get-api";
 
-export default async function Home() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=10`)
-  const topanime = await response.json()
+export default async function Page() {
+  const topanime = await GetAPIAnime ("top/anime", "limit=8")
 
   return (
     <>

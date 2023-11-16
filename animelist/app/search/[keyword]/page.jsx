@@ -1,12 +1,10 @@
 import Topanime from "@/app/components/Topanime"
 import Header from "@/app/components/Header"
-
+import { GetAPIAnime } from "@/app/components/libs/get-api"
 const Searchpage = async ({params}) => {
     const {keyword} = params
     const decodedKeyword = decodeURI(keyword)
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${decodedKeyword}`)
-    const searchAnime = await response.json()
-
+    const searchAnime = await GetAPIAnime ("anime", `q=${decodedKeyword}`)
     return (
         <>
             <section>
